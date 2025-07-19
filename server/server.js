@@ -16,12 +16,25 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://teacher-student-polling-system.vercel.app/", // Update with your frontend domain in production
+    origin: [
+      "http://localhost:5173",
+      "https://teacher-student-polling-system.vercel.app/",
+    ],
     methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://teacher-student-polling-system.vercel.app",
+    ],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 app.use("/api/poll", pollRoutes);
 
