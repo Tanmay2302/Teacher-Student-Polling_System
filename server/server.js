@@ -16,7 +16,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "*", // Update with your frontend domain in production
+    origin: "https://teacher-student-polling-system.vercel.app/", // Update with your frontend domain in production
     methods: ["GET", "POST"],
   },
 });
